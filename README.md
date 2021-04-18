@@ -53,6 +53,7 @@ Some notes:
 
 * It doesn't seem to be a mismatch between 32-bit debugger and 64-bit debuggee; nor does it matter what the TFM of the target process is. 
 * The problem is only when overriding `TransferData`; overriding `GetData` doesn't seem to have this problem. This suggests a possible workaround: call `GetData` to return the target value, and then pass the target value into `TransferData`.
+* A visualizer targeting `int` seems to have a similar problem, except that in this case the target process crashes.
 
 To reproduce:
 
