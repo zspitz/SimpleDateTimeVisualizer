@@ -14,7 +14,6 @@ namespace SimpleDateTimeVisualizer.Debuggee {
             object toSerialize =
                 repetitions is null ? $"Invalid value for repetitions" :
                 target switch {
-                    int i => Repeat(i, repetitions.Value).ToArray(),
                     DateTime dt => Repeat(dt, repetitions.Value).ToArray(),
                     null => $"{nameof(target)} is null",
                     _ => $"Not implemented for target of type {target.GetType().FullName}" as object
