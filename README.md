@@ -6,7 +6,7 @@ The visualizer targets [DateTime](https://docs.microsoft.com/en-us/dotnet/api/sy
 It's supposed to transfer a number to the debuggee side, along with the target value:
 
 ```csharp
-// https://github.com/zspitz/SimpleDateTimeVisualizer/blob/main/Debugger/Visualizer.cs#L25
+// https://github.com/zspitz/SimpleDateTimeVisualizer/blob/main/Debugger/Visualizer.cs
 
 var response = objectProvider.TransferObject(5);
 ```
@@ -14,7 +14,7 @@ var response = objectProvider.TransferObject(5);
 The debuggee side should create an array containing the target date; the length of the array is the number received:
 
 ```csharp
-// https://github.com/zspitz/SimpleDateTimeVisualizer/blob/main/Debuggee/VisualizerObjectSource.cs#L8
+// https://github.com/zspitz/SimpleDateTimeVisualizer/blob/main/Debuggee/VisualizerObjectSource.cs
 
 int? repetitions = Deserialize(incomingData) switch {
     int i when i > 0 => i,
@@ -34,6 +34,8 @@ object toSerialize =
 If everything works properly, the debugger side should receive the serialized/deserialized array, and display its contents, `Join`ed into a single string:
 
 ```csharp
+// https://github.com/zspitz/SimpleDateTimeVisualizer/blob/main/Debugger/Visualizer.cs
+
 var msg = response switch {
     string s => s,
     IEnumerable e => string.Join(", ", e.Cast<object>()),
