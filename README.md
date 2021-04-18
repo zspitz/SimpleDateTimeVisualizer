@@ -51,3 +51,10 @@ Some notes:
 
 * It doesn't seem to be a mismatch between 32-bit debugger and 64-bit debuggee; nor does it matter what the TFM of the target process is. 
 * The problem is only when overriding `TransferData`; overriding `GetData` doesn't seem to have this problem. This suggests a possible workaround: call `GetData` to return the target value, and then pass the target value into `TransferData`.
+
+To reproduce:
+
+* Build both the Debugger and Debuggee projects
+* Copy the contents of `Debugger\bin\Debug\net48` to `Documents\Visual Studio 2019\Visualizers`
+* Copy the contents of `Debuggee\bin\Debug` to `Documents\Visual Studio 2019\Visualizers`
+* Run the test project. There is a source-code breakpoint which will be hit.
